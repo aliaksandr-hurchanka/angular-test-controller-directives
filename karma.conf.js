@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sat Jul 25 2015 19:12:21 GMT+0530 (India Standard Time)
+// Generated on Wed Feb 17 2016 11:42:57 GMT+0300 (Belarus Standard Time)
 
 module.exports = function(config) {
   config.set({
@@ -10,7 +10,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'browserify'],
 
 
     // list of files / patterns to load in the browser
@@ -18,7 +18,7 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app/*.js',
-      'tests/*.js'
+      'tests.js'
     ],
 
 
@@ -30,6 +30,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        'app/*.js': [ 'browserify' ],
+        'tests.js': ['webpack']
     },
 
 
@@ -51,7 +53,7 @@ module.exports = function(config) {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
 
- 
+
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
@@ -63,6 +65,10 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+    // Concurrency level
+    // how many browser should be started simultaneous
+    concurrency: Infinity
   })
 }

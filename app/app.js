@@ -1,6 +1,9 @@
 var testApp = angular.module('app', []);
 var testAppCtrl = require('./app-ctrl');
 
+testApp
+    .controller('testAppCtrl', testAppCtrl)
+
 	// .directive('aGreatEye', function () {
 	// 	return {
 	// 		restrict: 'E',

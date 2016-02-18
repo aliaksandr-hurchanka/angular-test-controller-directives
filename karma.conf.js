@@ -18,7 +18,7 @@ module.exports = function(config) {
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'app/*.js',
-      'tests.js'
+      'tests/tests.js'
     ],
 
 
@@ -31,7 +31,7 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
         'app/*.js': [ 'browserify' ],
-        'tests.js': ['webpack']
+        'tests/tests.js': ['webpack']
     },
 
 

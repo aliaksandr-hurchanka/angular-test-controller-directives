@@ -1,16 +1,15 @@
 "use strict";
 
 module.exports = function ($scope) {
-    $scope.hello = 55;
+    $scope.hello = 555;
 
-    $scope.grade = function () {
-        var size = $scope.password.length;
-        if (size > 8) {
-            $scope.strength = 'strong';
-        } else if (size > 3) {
-            $scope.strength = 'medium';
-        } else {
-            $scope.strength = 'weak';
-        }
-    };
+    $scope.todos = [
+        {text:'learn angular'},
+        {text:'build an angular app'}
+    ];
+
+    $scope.addData = function () {
+        $scope.todos.push({text:$scope.todoText});
+        $scope.todoText = '';
+    }
 };

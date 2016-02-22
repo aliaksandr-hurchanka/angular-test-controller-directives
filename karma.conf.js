@@ -1,5 +1,15 @@
 // Karma configuration
-// Generated on Wed Feb 17 2016 11:42:57 GMT+0300 (Belarus Standard Time)
+// Generated on Mon Feb 22 2016 16:00:18 GMT+0300 (Belarus Standard Time)
+
+var fullWebpackConfig = require('./webpack.config.js');
+
+var webpackConfig = {
+  module: fullWebpackConfig.module,
+  resolve: fullWebpackConfig.resolve,
+  plugins: fullWebpackConfig.plugins,
+  devtool: 'eval',
+  cache: true
+};
 
 module.exports = function(config) {
   config.set({
@@ -10,17 +20,16 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine', 'browserify'],
+    frameworks: ['jasmine'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'node_modules/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'app/app.js',
-      'app/app-dir.js',
-      'app/app-ctrl.js',
-      'tests/tests.js'
+      'app/commons.js',
+      'app/index.bundle.js',
+      'app/test.bundle.js'
     ],
 
 
@@ -32,10 +41,11 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'app/*.js': [ 'browserify' ],
-        'tests/tests.js': ['webpack']
+        'app/test.bundle.js':['webpack']
     },
 
+
+    webpack: webpackConfig,
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
@@ -67,10 +77,6 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
+    singleRun: false
   })
 }

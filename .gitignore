@@ -1,1 +1,4 @@
 node_modules
+app/index.bundle.js
+app/test.bundle.js
+app/commons.js

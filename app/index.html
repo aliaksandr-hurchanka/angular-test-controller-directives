@@ -8,13 +8,10 @@
         .navbar { border-radius:0; }
     </style>
 
-    <!-- JS (load angular, ui-router, and our custom js file) -->
-    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 </head>
 
 <!-- apply our angular app to our site -->
-<body ng-app="app">
+<body>
 
 <!-- NAVIGATION -->
 <nav class="navbar navbar-inverse" role="navigation">
@@ -32,10 +29,12 @@
 
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
     <div ui-view></div>
-
+    <my-drtv></my-drtv>
 </div>
 
-<script src="./index.bundle.js"></script>
-
+    <!-- JS (load angular, ui-router, and our custom js file) -->
+    <script src="http://code.angularjs.org/1.2.13/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+	<script src="./index.bundle.js"></script>
 </body>
 </html>

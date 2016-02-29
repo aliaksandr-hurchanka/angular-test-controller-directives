@@ -1,6 +1,7 @@
 "use strict";
 
-module.exports = function () {
+(function () {
+    console.log('gsgfdgfdgfdgdfgfd');
     var scope, ctrl, element, $compile, $rootScope;
 
     var testAppCtrl = require('../app/app-ctrl');
@@ -69,4 +70,4 @@ module.exports = function () {
         });
 
     });
-};
+})();

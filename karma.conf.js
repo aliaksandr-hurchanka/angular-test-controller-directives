@@ -1,15 +1,4 @@
-// Karma configuration
-// Generated on Mon Feb 22 2016 16:00:18 GMT+0300 (Belarus Standard Time)
-
-var fullWebpackConfig = require('./webpack.config.js');
-
-var webpackConfig = {
-  module: fullWebpackConfig.module,
-  resolve: fullWebpackConfig.resolve,
-  plugins: fullWebpackConfig.plugins,
-  devtool: 'eval',
-  cache: true
-};
+var webpack = require('webpack');
 
 module.exports = function(config) {
   config.set({
@@ -29,7 +18,8 @@ module.exports = function(config) {
       'node_modules/angular-mocks/angular-mocks.js',
       'app/commons.js',
       'app/index.bundle.js',
-      'app/test.bundle.js'
+      'app/test.bundle.js',
+      'tests/tests.js'
     ],
 
 
@@ -37,16 +27,26 @@ module.exports = function(config) {
     exclude: [
     ],
 
-
+    webpack: {
+            devtool: 'inline-source-map',
+            
+            plugins: [
+                // new webpack.ProvidePlugin({
+                //     'Angular': 'angular'
+                // })
+            ],
+            watch: true
+    },
+    webpackServer: {
+        noInfo: true
+    },
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'app/test.bundle.js':['webpack']
+        'tests/tests.js':['webpack']
+        // 'app/test.bundle.js':['webpack', 'sourcemap']
     },
-
-
-    webpack: webpackConfig,
-
+    
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
@@ -77,6 +77,11 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+    plugins: [
+            require('karma-chrome-launcher'),
+            require('karma-webpack'),
+            require('karma-jasmine')
+        ]
   })
 }

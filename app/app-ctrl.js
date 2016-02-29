@@ -1,7 +1,7 @@
 "use strict";
 
 module.exports = function ($scope) {
-    $scope.hello = 555;
+    $scope.hello = 55;
 
     $scope.todos = [
         {text:'learn angular'},
